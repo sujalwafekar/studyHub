@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyHub - AI-Powered Resource Sharing</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Animated background -->
+    <div class="bg-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen">
+        <div class="landing-container">
+            <!-- Hero Section -->
+            <div class="hero-card glass-card">
+                <div class="logo-section">
+                    <div class="logo-icon">📚</div>
+                    <h1 class="brand-title">StudyHub</h1>
+                </div>
+                <p class="tagline">AI-Powered Resource Sharing for Students</p>
+                <p class="subtitle">Upload, organize, and discover study materials with intelligent categorization
+                    powered by Google Gemini AI</p>
+                <button id="google-login-btn" class="btn btn-primary btn-large">
+                    <span class="btn-icon">🔐</span>
+                    <span>Sign in with Google to Get Started</span>
+                </button>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features-grid">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">Smart Subject Detection</h3>
+                    <p class="feature-desc">AI automatically categorizes your PDFs into Physics, Chemistry, Maths,
+                        Biology, Computer Science, and more</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">📝</div>
+                    <h3 class="feature-title">Exam-Ready Summaries</h3>
+                    <p class="feature-desc">Get instant 5-point bullet summaries for quick revision before exams</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Intelligent Search</h3>
+                    <p class="feature-desc">Find resources instantly using AI-generated keywords and topic tags</p>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="how-it-works glass-card">
+                <h2 class="section-title">How It Works</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Sign In</h4>
+                            <p>Use your Google account to get started instantly</p>
+                        </div>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Upload PDF</h4>
+                            <p>Drop your study materials and add an optional title</p>
+                        </div>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>AI Analysis</h4>
+                            <p>Gemini AI categorizes, tags, and summarizes automatically</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="landing-footer">
+                <p>Built with ❤️ for Student Hackathons | Powered by Firebase & Google Gemini AI</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Setup Screen -->
+    <div id="profile-setup-screen" class="screen hidden">
+        <div class="container glass-card">
+            <div class="section-header">
+                <h2>✨ Complete Your Profile</h2>
+                <p class="section-subtitle">Help us personalize your experience</p>
+            </div>
+            <form id="profile-form">
+                <div class="form-group">
+                    <label for="university">🎓 University Name</label>
+                    <input type="text" id="university" placeholder="Enter your university" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">📖 Course/Branch</label>
+                    <input type="text" id="course" placeholder="e.g., Computer Science" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="semester">📅 Semester/Year</label>
+                    <input type="text" id="semester" placeholder="e.g., 1st Year" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <span>Save Profile</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Screen -->
+    <div id="dashboard-screen" class="screen hidden">
+        <!-- Top Navigation -->
+        <nav class="top-nav glass-card">
+            <div class="nav-brand">
+                <span class="logo-icon-small">📚</span>
+                <span class="brand-name">StudyHub</span>
+            </div>
+            <div class="nav-actions">
+                <button id="profile-btn" class="btn btn-secondary btn-small">👤 Profile</button>
+                <button id="logout-btn" class="btn btn-secondary btn-small">Logout</button>
+            </div>
+        </nav>
+
+        <div class="dashboard-container">
+            <!-- Upload Section -->
+            <div class="upload-card glass-card">
+                <div class="section-header">
+                    <h3>📤 Upload New Resource</h3>
+                    <p class="section-subtitle">AI will automatically categorize and summarize your PDF</p>
+                </div>
+                <form id="upload-form">
+                    <div class="upload-area">
+                        <div class="file-input-wrapper">
+                            <input type="file" id="file-input" accept=".pdf" required>
+                            <label for="file-input" class="file-label">
+                                <span class="upload-icon">📄</span>
+                                <span class="upload-text">Choose PDF File</span>
+                            </label>
+                            <span id="file-name-display" class="file-name-display"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="file-title" placeholder="Add a title (optional)">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-upload">
+                            <span>Upload & Analyze</span>
+                            <span class="btn-icon">✨</span>
+                        </button>
+                    </div>
+                    <div id="upload-status" class="upload-status"></div>
+                </form>
+            </div>
+
+            <!-- Resources Section -->
+            <div class="resources-section">
+                <div class="section-header-row">
+                    <h3>📚 Your Resources</h3>
+
+                    <!-- Search -->
+                    <div class="search-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="search-input" class="search-input"
+                            placeholder="Search by subject, title, or topics...">
+                    </div>
+                </div>
+
+                <div id="resources-list" class="resources-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Screen -->
+    <div id="profile-screen" class="screen hidden">
+        <nav class="top-nav glass-card">
+            <div class="nav-brand">
+                <span class="logo-icon-small">📚</span>
+                <span class="brand-name">StudyHub</span>
+            </div>
+            <div class="nav-actions">
+                <button id="back-to-dashboard-btn" class="btn btn-secondary btn-small">← Dashboard</button>
+                <button id="logout-btn-profile" class="btn btn-secondary btn-small">Logout</button>
+            </div>
+        </nav>
+
+        <div class="dashboard-container">
+            <div class="container glass-card">
+                <div class="section-header">
+                    <h2>👤 Your Profile</h2>
+                    <p class="section-subtitle">View and update your information</p>
+                </div>
+
+                <div id="profile-view" class="profile-view">
+                    <div class="profile-field">
+                        <label>📧 Email</label>
+                        <p id="profile-email" class="profile-value"></p>
+                    </div>
+                    <div class="profile-field">
+                        <label>👤 Name</label>
+                        <p id="profile-name" class="profile-value"></p>
+                    </div>
+                    <div class="profile-field">
+                        <label>🎓 University</label>
+                        <p id="profile-university" class="profile-value"></p>
+                    </div>
+                    <div class="profile-field">
+                        <label>📖 Course</label>
+                        <p id="profile-course" class="profile-value"></p>
+                    </div>
+                    <div class="profile-field">
+                        <label>📅 Year/Semester</label>
+                        <p id="profile-semester" class="profile-value"></p>
+                    </div>
+                    <button id="edit-profile-btn" class="btn btn-primary" style="margin-top: 1.5rem;">
+                        <span>✏️ Edit Profile</span>
+                    </button>
+                </div>
+
+                <form id="profile-edit-form" class="profile-edit-form hidden">
+                    <div class="form-group">
+                        <label for="edit-university">🎓 University Name</label>
+                        <input type="text" id="edit-university" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-course">📖 Course/Branch</label>
+                        <input type="text" id="edit-course" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-semester">📅 Semester/Year</label>
+                        <input type="text" id="edit-semester" required>
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <button type="submit" class="btn btn-primary" style="flex: 1;">
+                            <span>💾 Save Changes</span>
+                        </button>
+                        <button type="button" id="cancel-edit-btn" class="btn btn-secondary" style="flex: 1;">
+                            <span>✖️ Cancel</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- PDF.js for text extraction -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <!-- App Script -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
